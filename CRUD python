@@ -1,0 +1,68 @@
+from IPython.display import clear_output
+animal = []
+
+def show_menu():
+    clear_output()
+    print(' WELCOME TO THE JUNGLE')
+    print('1. Show Animal')
+    print('2. Add Animal')
+    print('3. Delete Animal')
+    print('4. Update Animal')
+    
+    
+def show_animal():
+    clear_output()
+    print('LIST OF ANIMAL :')
+    
+    while len(animal)<1:
+        print('------------------------------------')
+        print(' THERE NO ANIMAL IN LIST, please select ADD ANIMAL menu')
+        print('------------------------------------')
+        break
+    else:
+        index = 1
+        for a in animal:
+            print(index,'.'+ a)
+            index+=1
+        
+def add_animal():
+    tmp = input('Insert Animal')
+    animal.append(tmp)
+    show_animal()
+        
+def menu_back():
+    input('Press x to back')
+    show_menu()
+    
+def delete_animal(animal):
+    show_animal()
+    delete = int(input('Wich one you want to delete ? '))
+    if delete > len(animal):
+        error_x()
+    else:
+        animal.pop(delete-1)
+
+def error_x():
+    print('---please select number index !!--')
+    menu_back()
+    
+def update_animal():
+    
+    pass
+
+while True:
+    show_menu()
+    user = int(input('Select menu !'))
+    if user == 1:
+        show_animal()
+        menu_back()
+    elif user == 2:
+        add_animal()
+        menu_back()
+    elif user == 3:
+        delete_animal(animal)
+    elif user == 4:
+        update_animal()
+    else:
+        error_x()
+        
